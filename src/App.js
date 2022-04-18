@@ -28,6 +28,7 @@ const App = () => {
   const storedExpenses = JSON.parse(localStorage.getItem('expenses') || '[]');
 
   // const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  // console.log(JSON.stringify(DUMMY_EXPENSES));
   const [expenses, setExpenses] = useState(storedExpenses || []);
 
   const addExpenseHandler = (expense) => {

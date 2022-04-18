@@ -7,7 +7,7 @@ const ExpenseForm = (props) => {
   const [date, setDate] = useState('');
 
   const amountChangeHandler = (e) => {
-    setAmount(e.target.value);
+    setAmount(+e.target.value);
   };
 
   const dateChangeHandler = (e) => {
@@ -24,6 +24,7 @@ const ExpenseForm = (props) => {
     };
 
     props.onFormSubmit(expenseData);
+
     setTitle('');
     setAmount('');
     setDate('');
@@ -50,6 +51,7 @@ const ExpenseForm = (props) => {
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             type="text"
+            required
           />
         </div>
         <div className="new-expense__control">
@@ -59,8 +61,9 @@ const ExpenseForm = (props) => {
             value={amount}
             onChange={amountChangeHandler}
             type="number"
-            min="0"
+            min="0.1"
             step="0.1"
+            required
           />
         </div>
         <div className="new-expense__control">
@@ -72,10 +75,14 @@ const ExpenseForm = (props) => {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
+            required
           />
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="cancel" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
